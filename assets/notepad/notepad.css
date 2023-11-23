@@ -1,0 +1,116 @@
+* {
+    outline: none;
+    border: none;
+}
+
+#paper {
+    color: #000000;
+    font-size: 20px;
+}
+#margin {
+	margin-left:5px;
+	margin-bottom:20px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none; 
+}
+#text {
+    /* margin-right: 30px; */
+    /* margin-top: 150px; */
+    width: 17.5rem;
+  min-height: 10vh;
+
+    overflow: hidden;
+    background-color: #FFF;
+    color: #222;
+    font-family: Courier, monospace;
+    font-weight: normal;
+    font-size: 14px; /* Adjusted font size */
+    resize: none;
+    line-height: 24px; /* Adjusted line height */
+    padding-left: 30px; /* Adjusted padding */
+    padding-right: 30px; /* Adjusted padding */
+    padding-top: 25px; /* Adjusted padding */
+    padding-bottom: 16px; /* Adjusted padding */
+    /* background-image: url(https://static.tumblr.com/maopbtg/E9Bmgtoht/lines.png), url(https://static.tumblr.com/maopbtg/nBUmgtogx/paper.png); */
+    background-repeat: repeat-y, repeat;
+    -webkit-border-radius: 8px; /* Adjusted border radius */
+    border-radius: 8px; /* Adjusted border radius */
+    -webkit-box-shadow: 0px 2px 8px #000; /* Adjusted box shadow */
+    box-shadow: 0px 2px 8px #000; /* Adjusted box shadow */
+    border-top: 1px solid #000000;
+    border-bottom: 1px solid #000000;
+}
+
+#title {
+    background-color: transparent;
+    border-bottom: 2px solid #000000; /* Adjusted border */
+    color: #000000;
+    font-size: 16px; /* Adjusted font size */
+    font-family: Courier, monospace;
+    height: 22px; /* Adjusted height */
+    font-weight: bold;
+    width: 90px; /* Adjusted width */
+}
+/* 
+#button {
+
+    color: #FFF;
+    text-shadow: 0px -1px 0px #000000;
+    -webkit-border-radius: 8px;
+    border-radius: 8px;
+    border-top: 1px solid #FFF;
+    -webkit-box-shadow: 0px 2px 8px #000;
+    box-shadow: 0px 2px 8px #000;
+    background-color: #62add6;
+    background-repeat: repeat-x;
+} */
+
+#button:active,
+#button:focus {
+    zoom: 1;
+    filter: alpha(opacity=80);
+    opacity: 0.8;
+}
+
+
+#button {
+    background-color: white;
+    margin-top: 10px; /* Adjusted margin */
+    float: right;
+   /* Adjusted height */
+    padding-left: 14px; /* Adjusted padding */
+    padding-right: 14px; /* Adjusted padding */
+    font-size: 14px;
+    margin: 0 0.5em;
+    border-radius: 2em;
+    padding: 0.75em 1.5em;
+    cursor: pointer;
+    /* color: #2d7c58; */
+    border: 1px solid;
+    letter-spacing: 1px;
+    font-family: "Source Sans Pro", sans-serif;
+    color: #000000;
+    border: #000000 1px solid;
+    transition: 250ms ease-out;
+  }
+  #button:hover, #button:focus {
+    color: #000000;
+    background: #8787878a;;
+  }
+  
+
+
+
+#wrapper {
+/* Adjusted width */
+    height: auto;
+    display: flex;
+    margin-bottom: 15px;
+    margin-left: 17%;
+    /* margin-left: 120px; */
+    /* margin-right: auto; */
+    /* padding-right: 1px; */
+}

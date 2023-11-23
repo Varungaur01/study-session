@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+body{
+	font-family: 'Roboto', sans-serif;
+    /* margin: 0; */
+}
+.menu {
+  font-weight: 100;
+  background: #efefef;
+  width: 26rem;
+  height: 100%;
+  -webkit-box-shadow: -3px 0px 5px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: -3px 0px 5px 0px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  color: #222;
+  /* border: 3px solid red; */
+  border-radius: 1.3em;
+}
+
+.menu .title {
+  top: 50%;
+  position: absolute;
+  font-weight: 800;
+  font-size: 15px;
+}
+
+
+.menu .nav li {
+    padding-bottom: 30px;
+    list-style-type: none;
+  }
+.menu .nav li a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s;
+    -webkit-transition: all 0.3s;
+}
+.menu .nav li a:hover {
+    color: #aaa;
+}
+
+/* left menu */
+
+.left-menu{
+    padding-left: 20px;
+    position: fixed;
+    z-index: 100;
+    left: -400px;
+    /* right: -390px; */
+}
+
+.left-menu .title{
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    transform: rotate(270deg);
+    right: -15px;
+}
+.left-menu .nav {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(50%);
+  -ms-transform: translateY(50%);
+  transform: translateY(-50%);
+  font-weight: 100;
+  left: -70px;
+}
+.left-menu:hover, .left-menu:focus {
+    transform: translate3d(380px, 0, 0);
+    animation-timing-function: 1s ease-in;
+    backdrop-filter: blur(5px);
+    background-color: rgba(255, 255, 255, 0.12);
+  
+}
+
+
+
+
+/* right menu */
+
+
+.right-menu{
+    padding-left: 20px;
+    position: fixed;
+    z-index: 100;
+    right: -400px;
+}
+
+.right-menu .title{
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    transform: rotate(270deg);
+    left: -15px;
+}
+.right-menu .nav {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  /* padding-right: 150px; */
+  font-weight: 100;
+  right: 150px;
+}
+.right-menu:hover, .right-menu:focus {
+  transform: translate3d(-380px, 0, 0);
+  animation-timing-function: 1s ease-in;
+  backdrop-filter: blur(5px);
+  background-color: rgba(255, 255, 255, 0.12);
+
+}
+
+
+  
+
+
+.intro {
+  position: absolute;
+  top: 30%;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  font-size: 45px;
+  text-align: center;
+  font-style: italic;
+}
+
+
+
+
+

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./assets/side-menu/sidemenu.css">
+    <link rel="stylesheet" href="./assets/notepad/notepad.css">
+    <link rel="stylesheet" href="./assets/player/player.css">
+    <link rel="stylesheet" href="./assets/todo/todo.css">
+    <!-- <link rel="stylesheet" href="./navstyle.css"> -->
+    <title>task-master</title>
+</head>
+<body>
+  <!-- ---------------------------------------------------------------------------------------------- -->
+    <!-- ********* Right-side menu********** -->
+
+    <div class="menu left-menu">
+        <div class="title">HOVER ME</div>
+        <ul class="nav">
+          <!-- ########################### notepad ########################### -->
+          <div class="left-menu-options">
+            <div id="wrapper">
+
+            <form id="paper" method="get" action="">
+          
+              <div id="margin">Title: <input id="title" type="text" name="title"></div>
+              <textarea placeholder="Time to take notes." id="text" name="text" rows="4" style="overflow: hidden; word-wrap: break-word; resize: none; height: 160px; "></textarea>
+              <br>
+              <input id="button" type="submit" value="Create">
+          
+            </form>
+      
+          </div>
+          <!-- ########################### todo list ########################### -->
+          <div class="app" id="app">
+            <form class="form" v-on:submit="addTodo">
+              <input class="input form__input" v-model="inputVal"/>
+              <button class="btn form__submit-btn" type="submit">Add</button>
+            </form>
+            <transition-group tag="ol" name="list" class="todo-list">
+              <li
+                class="todo-list__item"
+                v-bind:class="{ complete: todo.complete }"
+                v-bind:key="index"
+                v-for="(todo, index) in filteredTodos">
+                <button
+                  class="todo-list__item-content"
+                  v-on:click="toggleTodo(todo)">
+                  {{ todo.text }}
+                </button>
+                <button
+                  class="btn todo-list__item-remove"
+                  v-on:click="deleteTodo(index)">
+                  <i class="fa" v-bind:class="[todo.complete ? 'fa-check' : 'fa-times']"></i>
+                </button>
+              </li>
+            </transition-group>
+            <div class="filters">
+              <button 
+                class="btn filters__btn filters__btn--all" 
+                v-on:click="filterTodos('all')">
+                All
+              </button>
+              <button 
+                class="btn filters__btn filters__btn--complete" 
+                v-on:click="filterTodos('complete')">
+                Complete
+              </button>
+              <button 
+                class="btn filters__btn filters__btn--incomplete" 
+                v-on:click="filterTodos('incomplete')">
+                Incomplete
+              </button>
+            </div>
+          </div>
+
+        </ul>
+    </div>
+          </div>
+  <!-- ---------------------------------------------------------------------------------------------- -->
+
+    <!-- Left-side menu -->
+    <div class="menu right-menu blur-container">
+      <div class="title">HOVER ME</div>
+      <ul class="nav">
+          <li><a href="https://chat.openai.com/" target="_blank">ChatGPT</a></li>
+          <div id="chatContainer">
+            <!-- This is where your ChatGPT component will be dynamically loaded -->
+        </div>
+        
+      </ul>
+  </div>
+  
+
+   
+    <!-- main content -->
+
+     <!-- ########################### clock ########################### -->
+     <div class="clock-section">
+      <svg viewBox="0 0 100 100" width="100" height="100">
+        <defs>
+            <!-- filters describing the shadows, applied on the larger and smaller shapes -->
+            <filter id="shadow-large">
+                <feDropShadow dx="0" dy="0" stdDeviation="4"/>
+            </filter>
+            <filter id="shadow-small">
+                    <feDropShadow dx="0" dy="0" stdDeviation="0.2"/>
+            </filter>
+      
+            <!-- mask used to cut out a sliver of the overlaid circle -->
+            <mask
+                id="mask">
+                <g transform="translate(50 50)">
+                    <!-- starting at -15, incrementing by 30 for each hour -->
+                    <g
+                        class="hours" transform="rotate(-15)">
+                        <circle
+                            cx="0"
+                            cy="0"
+                            r="50"
+                            fill="#fff">
+                        </circle>
+                        <path
+                            d="M 0 -50 v 50 l 28.86 -50"
+                            fill="#000">
+                        </path>
+                    </g>
+                </g>
+            </mask>
+        </defs>
+      
+        <!-- circle making up the bottom of the clock -->
+        <circle
+            cx="50"
+            cy="50"
+            r="46"
+            fill="#303335">
+        </circle>
+      
+        <!-- circle with the accent color, overlaid before the text elements -->
+        <circle
+            cx="50"
+            cy="50"
+            r="42"
+            fill="#EA3F3F"
+            filter="url(#shadow-large)">
+        </circle>
+      
+        <!-- text elements, positioned from the center around the clock -->
+        <g
+            class="clock--face"
+            font-size="8px"
+            transform="translate(50 50)"
+            text-anchor="middle"
+            dominant-baseline="middle">
+            <!-- the elements are included through the script, at intervals of 30 degrees -->
+            <!--
+            <text
+                transform="rotate(-90) translate(35 0) rotate(90)" >
+                12
+            </text>
+      
+            <text
+                transform="rotate(-0) translate(35 0) rotate(0)" >
+                03
+            </text>
+            -->
+        </g>
+      
+        <!-- circle overlaid on the accent circle and text elements -->
+        <circle
+            mask="url(#mask)"
+            cx="50"
+            cy="50"
+            r="50"
+            fill="#303335">
+        </circle>
+      
+        <!-- smaller circle on which the hands sit -->
+        <circle
+            cx="50"
+            cy="50"
+            r="4"
+            filter="url(#shadow-small)"
+            fill="#303335">
+        </circle>
+      
+        <!-- clock's hands -->
+        <!-- centered in the clock and rotated according to the passage of time in the 0-360 range -->
+        <g
+            class="hands"
+            transform="translate(50 50)"
+            >
+            <g
+                class="minutes"
+                transform="rotate(240)"> <!-- change rotation of this group to affect both clock's hand -->
+                <path
+                    fill="#fff"
+                    d="M -0.4 8 h 0.8 v -33 h -0.8 z">
+                </path>
+                <circle
+                    fill="#303335"
+                    cx="0"
+                    cy="0"
+                    r="0.6">
+                </circle>
+            </g>
+      
+            <g
+                class="seconds"
+                transform="rotate(80)"> <!-- change rotation of this group to affect both clock's hand -->
+                <path
+                    fill="#EA3F3F"
+                    d="M -0.4 10 h 0.8 v -45 h -0.8 z">
+                </path>
+                <circle
+                    stroke-width="0.4"
+                    stroke="#EA3F3F"
+                    fill="#303335"
+                    cx="0"
+                    cy="0"
+                    r="0.8">
+                </circle>
+            </g>
+        </g>
+      </svg>
+      
+      <!-- div wrapping the controls to change the number of hours/minutes/seconds -->
+      <div class="controls">
+        <div class="controls__control" data-control="hours">
+            <button>+</button>
+            <span class="control--hours">h</span>
+            <button>-</button>
+        </div>
+      
+        <div class="controls__control" data-control="minutes">
+            <button>+</button>
+            <span class="control--minutes">m</span>
+            <button>-</button>
+        </div>
+      
+        <div class="controls__control" data-control="seconds">
+            <button>+</button>
+            <span class="control--seconds">s</span>
+            <button>-</button>
+        </div>
+      </div>
+     </div>
+
+
+
+    <!-- ########################### music player ########################### -->
+    <div class="player">
+      <div id="info" class="info">
+        <span class="artist">Flume</span>
+        <span class="name">Say it</span>
+        <div class="progress-bar">
+          <div class="bar"></div>
+        </div>
+      </div>
+      <div id="control-panel" class="control-panel">
+        <div class="album-art"></div>
+        <div class="controls">
+          <div class="prev"></div>
+          <div id="play" class="play"></div>
+          <div class="next"></div>
+        </div>
+      </div>
+    </div>
+
+    <!--  -->
+
+
+    
+</body>
+<script src="./index.js"></script>
+
+<script src="./assets/side-menu/sidemenu.js"></script>
+
+<script src="./assets/notepad/notepad.js"></script>
+
+<script src="./assets/player/player.js"></script>
+
+<script src="./assets/todo/todo.js"></script>
+
+
+</html>

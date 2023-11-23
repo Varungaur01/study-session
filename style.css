@@ -1,0 +1,64 @@
+body{
+    background-image: linear-gradient( 102.7deg, rgba(253,218,255,1) 8.2%, rgba(223,173,252,1) 19.6%, rgba(173,205,252,1) 36.8%, rgba(173,252,244,1) 73.2%, rgba(202,248,208,1) 90.9% );
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* ********************************** */
+            /* clock  */
+/* ********************************* */
+
+.clock-section{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+/* have the clock describing the svg expand to cover a sizeable portion of the viewport */
+svg {
+  margin-top: 1rem;
+  width: 35vmin;
+  height: auto;
+  filter: url(#shadow-large);
+}
+svg text {
+  font-family: "Barlow Condensed", sans-serif;
+}
+
+/* display the controls side by side */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+}
+/* display the button+span elements in columns */
+.controls div {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
+/* style the buttons with the same colors used for the clock */
+.controls div button {
+  border: none;
+  border-radius: 50%;
+  background: #ea3f3f;
+  padding: 0.25rem;
+  color: #fff;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  filter: url(#shadow-large);
+  margin: 0.5rem 0;
+}
+.controls div span {
+  color: #fff;
+}
